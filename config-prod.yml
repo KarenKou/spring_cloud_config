@@ -1,25 +1,3 @@
-server:
+config:
   info: 3389
 
-spring:
-  application:
-    name: cloud-config-center #注册进Eureka服务器的微服务名
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/KarenKou/spring_cloud_config.git #GitHub上面的git仓库名字
-          search-paths: #搜索目录
-            - springcloud-config
-      label: master #读取分支
-      #启动成功后访问的路径 http://ip:3344/{label}/{application}-{profile}.yml 能访问的配置文件 就表示成功了
-    #rabbitmq相关配置
-
-eureka:
-  client:
-    register-with-eureka: true #表示是否将本服务注册进EurekaS服务server 默认为true
-    fetch-registry: true #是否从EurekaS服务server抓取有用的信息，默认true。单节点无所谓，如果是集群，必须是true才能配合ribbon使用负载均衡
-    #要注册进的eureka的服务地址
-    service-url:
-      #defaultZone: http://localhost:7001/eureka/  单机版
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
